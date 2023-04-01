@@ -1,0 +1,22 @@
+.commentItem{
+    padding: 0.25rem 0.5rem;
+    border: 0.5px solid black;
+    border-radius: 3px;
+    margin: 0.5rem auto;
+}
+
+.pendingCommentItem{
+    padding: 0.25rem 0.5rem;
+    border: 0.5px solid black;
+    border-radius: 3px;
+    margin: 0.5rem auto;
+    font-style: italic;
+}
+
+.rejectedCommentItem{
+    padding: 0.25rem 0.5rem;
+    border: 0.5px solid red;
+    border-radius: 3px;
+    margin: 0.5rem auto;
+    font-style: italic;
+}

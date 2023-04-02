@@ -12,7 +12,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post("/posts", async (req, res) => {
+app.post("/posts/create", async (req, res) => {
+  console.log("post occurred at /posts/create");
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
   try {
@@ -58,4 +59,5 @@ app.post("/event", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Listening Post Server at port ${PORT}`);
+  console.log("With some change for posts:latest");
 });

@@ -5,7 +5,7 @@ import styles from "./comment-create.module.css";
 function CommentCreate({ postId }) {
   const [content, setContent] = useState("");
   const createCommentHandler = async () => {
-    const comment = await createComment(postId, content);
+    await createComment(postId, content);
     setContent("");
   };
   return (

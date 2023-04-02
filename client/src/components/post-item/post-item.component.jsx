@@ -1,16 +1,12 @@
-import { useState, useEffect } from "react";
-import { fetchComments } from "../../utils/comments.service";
+import { useEffect } from "react";
+// import { fetchComments } from "../../utils/comments.service";
 import CommentCreate from "../comment-create/comment-create.component";
 import CommentItem from "../comment-item/comment-item.component";
 import styles from "./post-item.module.css";
 
 function PostItem({ title, id, comments }) {
   //   const [comments, setComments] = useState([]);
-  useEffect(() => {
-    // fetchComments(id).then((responseComments) => {
-    //   setComments(responseComments);
-    // });
-  }, []);
+  useEffect(() => {}, []);
   return (
     <div className={styles["post-item"]}>
       <div className="card">

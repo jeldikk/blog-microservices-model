@@ -4,16 +4,16 @@ async function notifyEvent(to, event) {
   let url;
   switch (to) {
     case "post":
-      url = "http://localhost:4000/event";
+      url = "http://posts-ip-service:4000/event";
       break;
     case "comment":
-      url = "http://localhost:4001/event";
+      url = "http://comments-ip-service:4001/event";
       break;
     case "query":
-      url = "http://localhost:4002/event";
+      url = "http://query-ip-service:4002/event";
       break;
     case "moderate":
-      url = "http://localhost:4003/event";
+      url = "http://moderation-ip-service:4003/event";
       break;
   }
   console.log({ url });

@@ -15,9 +15,9 @@ app.use((req, res, _next) => {
 app.post("/event", async (req, res) => {
   const event = req.body;
   console.log("event recieved at event-bus with payload ", event);
-  const promises = ["post", "comment", "query", "moderate"].map((service) =>
-    notifyEvent(service, event)
-  );
+  const services = ["post", "comment", "query", "moderate"];
+  // const services = ["post", "comment", "query", ];
+  const promises = services.map((service) => notifyEvent(service, event));
   //   console.log({ promises });
   Promise.all(promises).then((responses) => {
     // console.log({ responses });

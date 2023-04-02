@@ -30,7 +30,7 @@ function PostCreate() {
           type="text"
           className="form-control"
           id="post-title"
-          placeholder="Enter Post Title"
+          placeholder="Enter Post Title Here"
           onChange={onInputChangeHandler}
         />
         <button

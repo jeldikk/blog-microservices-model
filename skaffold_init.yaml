@@ -1,0 +1,32 @@
+apiVersion: skaffold/v4beta4
+kind: Config
+metadata:
+  name: blog-microservices-model
+build:
+  local:
+    push: false
+  artifacts:
+    - image: jeldikk/client
+      context: client
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1
+    - image: jeldikk/comments
+      context: comments
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1
+    - image: jeldikk/eventbus
+      context: event-bus
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1
+    - image: jeldikk/moderation
+      context: moderation
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1
+    - image: jeldikk/posts
+      context: posts
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1
+    - image: jeldikk/query
+      context: query
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1

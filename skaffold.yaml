@@ -1,0 +1,61 @@
+apiVersion: skaffold/v4beta4
+kind: Config
+manifests:
+  rawYaml:
+    - ./infra/k8s/deployments/*
+
+build:
+  local:
+    push: false
+  artifacts:
+    - image: jeldikk/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: 'src/**/*.js'
+    - image: jeldikk/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: jeldikk/comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+
+    - image: jeldikk/query
+      context: query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "*.js"
+    - image: jeldikk/moderation
+      context: moderation
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "*.js"
+    - image: jeldikk/eventbus #this is the image name 
+      context: event-bus #context means the folder name
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: "*.js"
+    
+          

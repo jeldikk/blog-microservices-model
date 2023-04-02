@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moderation-deployment
+spec:
+  selector:
+    matchLabels:
+      app: moderation-pod
+  template:
+    metadata:
+      labels:
+        app: moderation-pod
+    spec:
+      containers:
+        - name: moderation
+          image: jeldikk/moderation
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderation-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: moderation-pod
+  ports:
+    - name: moderation
+      protocol: TCP
+      port: 4003
+      targetPort: 4003
+

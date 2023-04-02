@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eventbus-deployment
+spec:
+  selector:
+    matchLabels:
+      app: eventbus-pod
+  template:
+    metadata:
+      labels:
+        app: eventbus-pod
+    spec:
+      containers:
+        - name: eventbus
+          image: jeldikk/eventbus
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eventbus-service
+spec:
+  type: ClusterIP
+  selector:
+    app: eventbus-pod
+  ports:
+    - name: eventbus
+      protocol: TCP
+      port: 4005
+      targetPort: 4005
